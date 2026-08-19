@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://thesajidalam.github.io/json-forge">
+<a href="https://json-forge.js.org">
   <img src="public/favicon.svg" alt="JsonForge Logo" width="80" height="80">
 </a>
 
@@ -10,7 +10,7 @@
 
 Format. Validate. Transform. Inspect. Diff. Export. All in your browser, zero dependencies, instant.
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-json--forge.js.org-0ea5e9?style=for-the-badge&logo=googlechrome&logoColor=white)](https://thesajidalam.github.io/json-forge)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-json--forge.js.org-0ea5e9?style=for-the-badge&logo=googlechrome&logoColor=white)](https://json-forge.js.org)
 [![MIT License](https://img.shields.io/badge/License-MIT-10b981?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/thesajidalam/json-forge?style=for-the-badge&logo=github&color=f59e0b)](https://github.com/thesajidalam/json-forge)
 [![GitHub Forks](https://img.shields.io/github/forks/thesajidalam/json-forge?style=for-the-badge&logo=github&color=8b5cf6)](https://github.com/thesajidalam/json-forge/network/members)
@@ -118,7 +118,7 @@ Compare two JSON objects side-by-side. See additions, removals, and modification
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-> Visit **[thesajidalam.github.io/json-forge](https://thesajidalam.github.io/json-forge)** to see the real thing.
+> Visit **[json-forge.js.org](https://json-forge.js.org)** to see the real thing.
 
 </div>
 
@@ -128,7 +128,7 @@ Compare two JSON objects side-by-side. See additions, removals, and modification
 
 ### Option 1 — Use Online (Recommended)
 
-No installation needed. Just open **[thesajidalam.github.io/json-forge](https://thesajidalam.github.io/json-forge)** and start working.
+No installation needed. Just open **[json-forge.js.org](https://json-forge.js.org)** and start working.
 
 ### Option 2 — Run Locally
 
@@ -324,7 +324,7 @@ Inspired by the daily need for a better JSON tool that actually respects develop
 
 <div align="center">
 
-**[Try JsonForge Now →](https://thesajidalam.github.io/json-forge)**
+**[Try JsonForge Now →](https://json-forge.js.org)**
 
 <br>
 
