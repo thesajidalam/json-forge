@@ -330,6 +330,6 @@ Inspired by the daily need for a better JSON tool that actually respects develop
 
 Made with **React** + **TypeScript** + **Tailwind CSS** + **Vite**
 
-[![Star History Chart](https://api.star-history.com/svg?repos=thesajidalam/json-forge&type=Date)](https://star-history.com/#thesajidalam/json-forge&Date)
+[![Star History](https://img.shields.io/badge/Star_History-Track_Stars-f59e0b?style=for-the-badge&logo=starship&logoColor=white)](https://www.star-history.com/?repos=thesajidalam%2Fjson-forge&type=date&legend=top-left)
 
 </div>
