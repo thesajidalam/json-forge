@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
 
 interface Props {
   value: string;
@@ -7,22 +7,28 @@ interface Props {
   placeholder?: string;
 }
 
-export default function JsonInput({ value, onChange, errorLine, placeholder }: Props) {
+const JsonInput = forwardRef<HTMLTextAreaElement, Props>(({ value, onChange, errorLine, placeholder }, ref) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const lineNumbersRef = useRef<HTMLDivElement>(null);
 
+  useImperativeHandle(ref, () => textareaRef.current!);
+
   useEffect(() => {
-    const textarea = textareaRef.current;
-    const lineNums = lineNumbersRef.current;
-    if (!textarea || !lineNums) return;
-
-    const sync = () => {
-      lineNums.scrollTop = textarea.scrollTop;
-    };
-
-    textarea.addEventListener('scroll', sync);
-    return () => textarea.removeEventListener('scroll', sync);
+    const ta = textareaRef.current;
+    const ln = lineNumbersRef.current;
+    if (!ta || !ln) return;
+    const sync = () => { ln.scrollTop = ta.scrollTop; };
+    ta.addEventListener('scroll', sync);
+    return () => ta.removeEventListener('scroll', sync);
   }, []);
+
+  useEffect(() => {
+    if (errorLine && textareaRef.current && lineNumbersRef.current) {
+      const lineH = 20;
+      lineNumbersRef.current.scrollTop = Math.max(0, (errorLine - 3) * lineH);
+      textareaRef.current.scrollTop = Math.max(0, (errorLine - 3) * lineH);
+    }
+  }, [errorLine]);
 
   const lines = value.split('\n');
   const lineCount = Math.max(lines.length, 20);
@@ -31,16 +37,12 @@ export default function JsonInput({ value, onChange, errorLine, placeholder }: P
     <div className="relative flex-1 flex overflow-hidden min-h-0">
       <div
         ref={lineNumbersRef}
-        className="w-12 shrink-0 pt-4 pb-4 text-right pr-2 select-none overflow-hidden bg-slate-900/30 border-r border-slate-700/30"
+        className="w-12 shrink-0 pt-4 pb-4 text-right pr-2 select-none overflow-hidden line-numbers-bg"
       >
         {Array.from({ length: lineCount }, (_, i) => (
           <div
             key={i + 1}
-            className={`text-[11px] leading-5 font-mono ${
-              errorLine === i + 1
-                ? 'text-red-400 font-bold'
-                : 'text-slate-600'
-            }`}
+            className={errorLine === i + 1 ? 'line-num-error' : 'line-num'}
           >
             {i + 1}
           </div>
@@ -50,11 +52,17 @@ export default function JsonInput({ value, onChange, errorLine, placeholder }: P
         ref={textareaRef}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder || 'Paste your JSON here...'}
+        placeholder={placeholder}
         spellCheck={false}
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
         className="input-area !pl-3 font-mono text-[13px] leading-5"
         style={{ tabSize: 2 }}
       />
     </div>
   );
-}
+});
+
+JsonInput.displayName = 'JsonInput';
+export default JsonInput;
