@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+
+  ::selection {
+    background: rgba(14, 165, 233, 0.3);
+    color: white;
+  }
+
+  body {
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  #root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium
+           transition-all duration-200 ease-out cursor-pointer select-none
+           active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-500 hover:bg-brand-600 text-white shadow-lg shadow-brand-500/20
+           hover:shadow-brand-500/40;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent hover:bg-white/10 text-slate-300 hover:text-white;
+  }
+
+  .btn-secondary {
+    @apply btn bg-slate-700 hover:bg-slate-600 text-slate-200;
+  }
+
+  .btn-danger {
+    @apply btn bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300;
+  }
+
+  .btn-success {
+    @apply btn bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 hover:text-emerald-300;
+  }
+
+  .panel {
+    @apply bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl;
+  }
+
+  .panel-header {
+    @apply flex items-center justify-between px-4 py-2.5 border-b border-slate-700/50;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium;
+  }
+
+  .input-area {
+    @apply w-full h-full bg-transparent text-slate-200 font-mono text-sm
+           resize-none outline-none placeholder-slate-500 p-4;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-400 via-brand-300 to-fire-400
+           bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply bg-slate-800/60 backdrop-blur-xl border border-slate-700/40;
+  }
+
+  .tooltip-container {
+    @apply relative;
+  }
+
+  .tooltip-container .tooltip {
+    @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1
+           bg-slate-900 text-xs text-slate-200 rounded-md whitespace-nowrap
+           opacity-0 pointer-events-none transition-opacity duration-150 z-50
+           border border-slate-700;
+  }
+
+  .tooltip-container:hover .tooltip {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .line-numbers {
+    counter-reset: line;
+  }
+
+  .line-numbers > span::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 2.5em;
+    text-align: right;
+    margin-right: 1em;
+    color: #475569;
+    font-size: 0.75rem;
+  }
+}

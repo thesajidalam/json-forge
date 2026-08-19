@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/components/diffview.tsx","./src/components/header.tsx","./src/components/jsoninput.tsx","./src/components/jsonoutput.tsx","./src/components/themetoggle.tsx","./src/components/toolbar.tsx","./src/hooks/usetheme.ts","./src/utils/convert.ts","./src/utils/diff.ts","./src/utils/json.ts","./src/utils/tree.ts"],"version":"5.9.3"}
