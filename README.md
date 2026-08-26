@@ -1,31 +1,24 @@
 <div align="center">
 
-<a href="https://json-forge.js.org">
-  <img src="public/favicon.svg" alt="JsonForge Logo" width="80" height="80">
-</a>
+<img src="public/logo.svg" alt="JsonForge" width="320">
 
-# JsonForge
+<br>
 
-**The most powerful JSON formatter, validator & toolkit — built for developers.**
+**The only JSON tool you'll ever need.**
 
-Format. Validate. Transform. Inspect. Diff. Export. All in your browser, zero dependencies, instant.
+Format. Validate. Transform. Inspect. Diff. Export. All in your browser — zero dependencies, instant, private.
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-json--forge.js.org-0ea5e9?style=for-the-badge&logo=googlechrome&logoColor=white)](https://json-forge.js.org)
+<br>
+
+[![Live Demo](https://img.shields.io/badge/LIVE_DEMO-json--forge.sajidalamhere.workers.dev-0ea5e9?style=for-the-badge&logo=cloudflare&logoColor=white)](https://json-forge.sajidalamhere.workers.dev)
 [![MIT License](https://img.shields.io/badge/License-MIT-10b981?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/thesajidalam/json-forge?style=for-the-badge&logo=github&color=f59e0b)](https://github.com/thesajidalam/json-forge)
-[![GitHub Forks](https://img.shields.io/github/forks/thesajidalam/json-forge?style=for-the-badge&logo=github&color=8b5cf6)](https://github.com/thesajidalam/json-forge/network/members)
 
 <img src="https://img.shields.io/badge/React_18-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React">
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
 <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind">
-<img src="https://img.shields.io/badge/Vite-B6C3FF?style=flat-square&logo=vite&logoColor=black" alt="Vite">
-<img src="https://img.shields.io/badge/Built_with-Zero_Deps-10b981?style=flat-square" alt="Zero Dependencies">
-
-<br><br>
-
-*Every developer Googles "json formatter" at least once a day.*
-*Most tools are bloated, ugly, or unreliable.*
-*JsonForge was built to be the last JSON tool you'll ever need.*
+<img src="https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite">
+<img src="https://img.shields.io/badge/Cloudflare_Pages-Deployed-10b981?style=flat-square&logo=cloudflare&logoColor=white" alt="Cloudflare">
 
 </div>
 
@@ -33,274 +26,251 @@ Format. Validate. Transform. Inspect. Diff. Export. All in your browser, zero de
 
 <br>
 
-## 🎯 Why JsonForge?
+## The Problem
+
+Every developer has a tab open with some JSON formatter. They're all either bloated, ugly, unreliable, or **send your data to a server**. You deserve better.
+
+## The Solution
+
+JsonForge is a **client-side, zero-dependency, open-source** JSON toolkit that runs entirely in your browser. Your data never leaves your machine. It's fast, beautiful, and does everything you need — format, validate, transform, diff, export — without the overhead.
+
+<br>
+
+## Why JsonForge
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### Format & Validate
+Paste any JSON and get instant formatting with **exact line & column** error reporting. No more guessing what went wrong.
+
+### Tree View
+Explore deeply nested structures with an interactive expandable tree. Search across all keys instantly.
+
+### JSON Diff
+Compare two JSON objects side-by-side. Additions, removals, and modifications — all color-coded.
+
+</td>
+<td width="50%" valign="top">
+
+### Convert & Export
+Export to **JSON**, **CSV**, **YAML**, or auto-generate **TypeScript interfaces** from your data structure.
+
+### 6 Premium Themes
+Light, Dark, Bold Dark, Midnight, Monochrome, and Nord. Pick the one that matches your workflow.
+
+### 100% Private
+Everything runs locally. Zero network requests. Your data never touches a server. Enterprise-grade privacy by default.
+
+</td>
+</tr>
+</table>
+
+<br>
+
+## Compare
 
 | | Other Tools | **JsonForge** |
-|---|---|---|
+|:--|:--|:--|
 | **Speed** | Slow on large payloads | Instant — handles megabytes in ms |
 | **Validation** | "Invalid JSON" | Exact **line & column** error reporting |
-| **Features** | Format only | Format, Minify, Validate, Tree View, Diff, CSV, YAML, TypeScript |
-| **Themes** | Light OR Dark | Beautiful **dark & light** themes with glass morphism |
-| **UX** | Desktop only | Fully **responsive** — works on mobile |
-| **Privacy** | Sends data to servers | **100% client-side** — your data never leaves your browser |
-| **Dependencies** | 15+ packages | **Zero** runtime dependencies beyond React |
-| **Bundle Size** | Megabytes | **~56 KB** gzipped JS + **~6 KB** gzipped CSS |
+| **Features** | Format only | Format, Minify, Validate, Tree, Diff, CSV, YAML, TypeScript |
+| **Themes** | Light OR Dark | **6 themes** — Light, Dark, Bold, Midnight, Mono, Nord |
+| **Privacy** | Sends data to servers | **100% client-side** — your data stays on your machine |
+| **Dependencies** | 15+ packages | **Zero** runtime dependencies |
+| **Bundle** | Megabytes | **~57 KB** JS + **~5 KB** CSS gzipped |
 
 <br>
 
-## ⚡ Features
-
-<div align="center">
-
-```
-Format  ·  Minify  ·  Validate  ·  Tree View  ·  Diff  ·  CSV  ·  YAML  ·  TypeScript  ·  Export  ·  Themes
-```
-
-</div>
+---
 
 <br>
 
-### 📝 Format & Validate
+## Quick Start
 
-Paste any JSON — valid or broken — and get instant results. Errors are pinpointed with exact **line and column** numbers so you can fix them fast.
+### Online (Recommended)
 
-### 🌲 Tree View
+**[Open json-forge.sajidalamhere.workers.dev](https://json-forge.sajidalamhere.workers.dev)** — nothing to install, works instantly.
 
-Explore deeply nested JSON with an interactive expandable/collapsible tree. Search across all keys to find exactly what you need.
-
-### 🔀 JSON Diff
-
-Compare two JSON objects side-by-side. See additions, removals, and modifications at a glance with color-coded indicators.
-
-### 🔄 Convert & Export
-
-| Export Format | Description |
-|:---:|---|
-| **JSON** | Pretty-printed or minified with customizable indentation |
-| **CSV** | Auto-flattened from arrays of objects, proper escaping |
-| **YAML** | Fully recursive with correct quoting and nesting |
-| **TypeScript** | Auto-generated interfaces from your JSON structure |
-
-### 🎨 Themes & Polish
-
-- **Dark mode** with deep slate palette and glass morphism effects
-- **Light mode** with clean whites and subtle shadows
-- Syntax-highlighted output with color-coded keys, strings, numbers, booleans, and nulls
-- Custom scrollbars, smooth transitions, and micro-animations
-- Line numbers with hover highlighting
-
-<br>
-
-## 📸 Screenshots
-
-<div align="center">
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                                                                     │
-│  ┌─ Input Panel ────────────┐  ┌─ Output Panel ──────────────────┐ │
-│  │                           │  │ [Text] [Tree] [Diff]            │ │
-│  │  {                        │  │ [JSON] [CSV] [YAML] [TS]        │ │
-│  │    "name": "JsonForge",   │  │                                 │ │
-│  │    "version": "1.0.0",    │  │  1  {                           │ │
-│  │    "features": {          │  │  2    "name": "JsonForge",      │ │
-│  │      "format": true,      │  │  3    "version": "1.0.0",       │ │
-│  │      "validate": true     │  │  4    "features": {             │ │
-│  │    }                      │  │  5      "format": true,         │ │
-│  │  }                        │  │  6      "validate": true        │ │
-│  │                           │  │  7    }                         │ │
-│  │  ✓ Valid                  │  │  8  }                           │ │
-│  │                           │  │                                 │ │
-│  └───────────────────────────┘  └─────────────────────────────────┘ │
-│                                                                     │
-│  JsonForge │ JSON │ 42 keys · 4 deep · 1.2 KB          ? help     │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
-> Visit **[json-forge.js.org](https://json-forge.js.org)** to see the real thing.
-
-</div>
-
-<br>
-
-## 🚀 Quick Start
-
-### Option 1 — Use Online (Recommended)
-
-No installation needed. Just open **[json-forge.js.org](https://json-forge.js.org)** and start working.
-
-### Option 2 — Run Locally
+### Run Locally
 
 ```bash
-# Clone the repository
 git clone https://github.com/thesajidalam/json-forge.git
 cd json-forge
-
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-Then open [http://localhost:5173](http://localhost:5173)
-
-### Option 3 — Build for Production
-
-```bash
-# Build optimized static files
-npm run build
-
-# Preview the production build
-npm run preview
-```
-
-The `dist/` directory contains everything you need to deploy anywhere.
+Opens at [http://localhost:5173](http://localhost:5173)
 
 <br>
 
-## ⌨️ Keyboard Shortcuts
-
-| Shortcut | Action | Description |
-|:---:|---|---|
-| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | **Format** | Pretty-print the JSON input |
-| <kbd>Ctrl</kbd> + <kbd>L</kbd> | **Clear** | Reset all input and output |
-| <kbd>Ctrl</kbd> + <kbd>S</kbd> | **Download** | Export the current output as a file |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | **Copy** | Copy output to clipboard |
-| <kbd>?</kbd> | **Help** | Toggle the help modal |
-| <kbd>Esc</kbd> | **Close** | Dismiss any open modal |
+---
 
 <br>
 
-## 🧰 Tech Stack
+## Features
+
+### Keyboard Shortcuts
+
+| Shortcut | Action |
+|:--|:--|
+| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Format JSON |
+| <kbd>Ctrl</kbd> + <kbd>L</kbd> | Clear input |
+| <kbd>Ctrl</kbd> + <kbd>S</kbd> | Download output |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | Copy output |
+| <kbd>?</kbd> | Toggle help |
+| <kbd>Esc</kbd> | Close modals |
+
+### Editor
+
+- Line numbers with error highlighting
+- Synced scrolling between line numbers and editor
+- Auto-scroll to error lines
+- Configurable indentation (2, 4, 8 spaces)
+- Word wrap toggle
+- Drag & drop file upload
+- Syntax-highlighted output with color-coded token types
+
+### Export Formats
+
+| Format | Description |
+|:--|:--|
+| **JSON** | Pretty-printed or minified, configurable indent |
+| **CSV** | Auto-flattened from arrays of objects |
+| **YAML** | Recursive with correct quoting and nesting |
+| **TypeScript** | Auto-generated interfaces from JSON structure |
+
+<br>
+
+---
+
+<br>
+
+## Tech Stack
 
 <div align="center">
 
-| Layer | Technology | Why |
-|:---:|:---:|---|
-| **UI** | [React 18](https://react.dev) | Declarative, fast rendering with hooks |
-| **Language** | [TypeScript](https://www.typescriptlang.org) | Type safety, better DX, fewer bugs |
-| **Styling** | [Tailwind CSS](https://tailwindcss.com) | Utility-first, zero runtime CSS |
-| **Build** | [Vite](https://vitejs.dev) | Lightning-fast HMR and optimized builds |
-| **Deploy** | [GitHub Pages](https://pages.github.com) | Free, reliable, global CDN |
+| | Technology | Purpose |
+|:--|:--|:--|
+| **UI** | [React 18](https://react.dev) | Declarative rendering, hooks |
+| **Language** | [TypeScript](https://typescriptlang.org) | Type safety, better DX |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com) | Utility-first CSS, CSS variables |
+| **Build** | [Vite 6](https://vitejs.dev) | Fast HMR, optimized builds |
+| **Deploy** | [Cloudflare Pages](https://pages.cloudflare.com) | Global edge network |
 
 </div>
 
 <br>
 
-### Bundle Analysis
+### Bundle Size
 
 ```
-Asset               Size       Gzipped
+Asset              Size        Gzipped
 ──────────────────────────────────────
-index.js            175.4 KB    56.2 KB
-index.css            35.1 KB     6.1 KB
+index.js           183.9 KB    57.2 KB
+index.css           23.3 KB     5.2 KB
 ──────────────────────────────────────
-Total               210.5 KB    62.3 KB
+Total              207.2 KB    62.4 KB
 ```
-
-> Zero runtime dependencies. Only React and dev tooling.
 
 <br>
 
-## 📁 Project Structure
+---
+
+<br>
+
+## Project Structure
 
 ```
 json-forge/
 ├── public/
-│   └── favicon.svg              # App icon
+│   ├── favicon.svg           # App icon
+│   ├── logo.svg              # Main logo
+│   └── logo-light.svg        # Light variant
 ├── src/
 │   ├── components/
-│   │   ├── Header.tsx           # Top bar with branding & actions
-│   │   ├── JsonInput.tsx        # Code editor with line numbers
-│   │   ├── JsonOutput.tsx       # Tree view renderer
-│   │   ├── Toolbar.tsx          # Action buttons & view toggles
-│   │   ├── DiffView.tsx         # Side-by-side diff comparison
-│   │   ├── ThemeToggle.tsx      # Dark/light mode switch
-│   │   └── HelpModal.tsx        # Keyboard shortcuts & tips
+│   │   ├── Header.tsx        # Logo, branding, theme picker
+│   │   ├── JsonInput.tsx     # Editor with line numbers
+│   │   ├── JsonOutput.tsx    # Interactive tree view
+│   │   ├── Toolbar.tsx       # Actions, tabs, controls
+│   │   ├── DiffView.tsx      # JSON comparison
+│   │   ├── ThemeToggle.tsx   # 6-theme dropdown picker
+│   │   └── HelpModal.tsx     # Shortcuts & tips
 │   ├── hooks/
-│   │   └── useTheme.ts          # Theme persistence hook
+│   │   └── useTheme.ts       # Theme state & persistence
+│   ├── lib/
+│   │   └── themes.ts         # Theme definitions
 │   ├── utils/
-│   │   ├── json.ts              # Parse, format, minify
-│   │   ├── convert.ts           # CSV, YAML, TypeScript generators
-│   │   ├── diff.ts              # Deep JSON diffing algorithm
-│   │   └── tree.ts              # Tree structure builder
-│   ├── App.tsx                  # Main orchestrator
-│   ├── main.tsx                 # Entry point
-│   └── index.css                # Tailwind + custom components
-├── .github/
-│   └── workflows/
-│       └── deploy.yml           # Auto-deploy on push to main
-├── package.json
-├── tsconfig.json
-├── tailwind.config.js
+│   │   ├── json.ts           # Parse, format, minify
+│   │   ├── convert.ts        # CSV, YAML, TypeScript
+│   │   ├── diff.ts           # Deep diff algorithm
+│   │   └── tree.ts           # Tree builder
+│   ├── App.tsx               # Main app orchestrator
+│   ├── main.tsx              # Entry point
+│   └── index.css             # Design system + theme vars
+├── .github/workflows/
+│   └── deploy.yml            # GitHub Pages CI/CD
+├── tailwind.config.js        # Theme-aware Tailwind config
 ├── vite.config.ts
-└── README.md
+└── package.json
 ```
 
 <br>
 
-## 🎛️ Features Deep Dive
-
-### Real-time Validation
-
-As you type, JsonForge parses your JSON and reports:
-- **Syntax errors** with exact line and column numbers
-- **Valid/Invalid badge** in the input panel header
-- **Error bar** at the bottom with detailed error messages
-- Auto-scrolls to the error line in the editor
-
-### Configurable Indentation
-
-Choose between **2**, **4**, or **8** space indentation from the toolbar. The setting applies to both Format and output generation.
-
-### Word Wrap Toggle
-
-Long lines too wide? Toggle word wrap to wrap them within the viewport, or keep them on a single line for precise editing.
-
-### Drag & Drop
-
-Drop any `.json`, `.txt`, or `.geojson` file directly onto the page. No file picker needed.
-
-### File Upload & Download
-
-- Upload JSON files via the toolbar button
-- Download output in the current format (`.json`, `.csv`, `.yaml`, `.ts`)
-- Copy output to clipboard with one click
-
-### JSON Statistics
-
-The status bar shows live stats for your JSON:
-- Total key count
-- Maximum nesting depth
-- File size
-- Number of arrays and objects
+---
 
 <br>
 
-## 🤝 Contributing
+## Themes
 
-Contributions are welcome! Here's how to get started:
+Six carefully crafted themes with CSS custom properties for instant switching:
 
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
+| Theme | Description |
+|:--|:--|
+| **Light** | Clean white, brand blue accent |
+| **Dark** | Slate-blue, developer-friendly |
+| **Bold Dark** | Pure black, high contrast — for focused work |
+| **Midnight** | Deep indigo with purple tones |
+| **Monochrome** | Pure grayscale — no distractions |
+| **Nord** | Arctic blue-green palette |
 
-### Development Commands
+<br>
+
+---
+
+<br>
+
+## Contributing
 
 ```bash
-npm run dev        # Start dev server
-npm run build      # Production build
-npm run preview    # Preview production build
-npm run lint       # Run ESLint
+# Fork and clone
+git clone https://github.com/YOUR_USERNAME/json-forge.git
+cd json-forge
+
+# Install
+npm install
+
+# Develop
+npm run dev
+
+# Build
+npm run build
+
+# Lint
+npm run lint
 ```
+
+Open a PR with a clear description of your changes.
 
 <br>
 
-## 📋 Roadmap
+---
+
+<br>
+
+## Roadmap
 
 - [ ] JSONPath query support
 - [ ] JSON Schema validation
@@ -312,24 +282,18 @@ npm run lint       # Run ESLint
 
 <br>
 
-## 🙏 Acknowledgments
-
-Built with care by [@thesajidalam](https://github.com/thesajidalam)
-
-Inspired by the daily need for a better JSON tool that actually respects developers' time and eyes.
+---
 
 <br>
-
----
 
 <div align="center">
 
-**[Try JsonForge Now →](https://json-forge.js.org)**
+**[Try JsonForge Now](https://json-forge.sajidalamhere.workers.dev)**
 
 <br>
 
-Made with **React** + **TypeScript** + **Tailwind CSS** + **Vite**
+Built by [@thesajidalam](https://github.com/thesajidalam)
 
-[![Star History Chart](https://api.star-history.com/svg?repos=thesajidalam/json-forge&type=Date)](https://star-history.com/#thesajidalam/json-forge&Date)
+MIT License — Use it however you want.
 
 </div>
