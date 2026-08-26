@@ -175,62 +175,63 @@
    THEME VARIABLES
    ============================================================ */
 
-/* --- Light (default) --- */
+/* --- Light (warm paper, high contrast) --- */
 :root {
-  --jf-bg: #ffffff;
-  --jf-surface-1: #f8fafc;
-  --jf-surface-2: #f1f5f9;
-  --jf-surface-3: #e2e8f0;
-  --jf-panel: rgba(255, 255, 255, 0.85);
-  --jf-border: #e2e8f0;
-  --jf-border-strong: #cbd5e1;
-  --jf-text: #0f172a;
-  --jf-text-secondary: #475569;
-  --jf-text-muted: #94a3b8;
-  --jf-accent: #0ea5e9;
-  --jf-accent-hover: #0284c7;
-  --jf-accent-bg: rgba(14, 165, 233, 0.1);
-  --jf-accent-border: rgba(14, 165, 233, 0.3);
-  --jf-thumb: #cbd5e1;
-  --jf-thumb-hover: #94a3b8;
-  /* Syntax */
-  --syn-key: #2563eb;
-  --syn-str: #16a34a;
-  --syn-num: #d97706;
-  --syn-bool: #9333ea;
-  --syn-null: #dc2626;
-  --syn-punct: #94a3b8;
-  --syn-hover: rgba(14, 165, 233, 0.04);
+  --jf-bg: #f8f7f4;
+  --jf-surface-1: #f0eeea;
+  --jf-surface-2: #eae8e3;
+  --jf-surface-3: #ddd9d2;
+  --jf-panel: rgba(248, 247, 244, 0.92);
+  --jf-border: #d6d3cc;
+  --jf-border-strong: #b8b4ab;
+  --jf-text: #1a1918;
+  --jf-text-secondary: #3d3a36;
+  --jf-text-muted: #8a8580;
+  --jf-accent: #1d6fa5;
+  --jf-accent-hover: #155a87;
+  --jf-accent-bg: rgba(29, 111, 165, 0.08);
+  --jf-accent-border: rgba(29, 111, 165, 0.22);
+  --jf-thumb: #c8c4bc;
+  --jf-thumb-hover: #a8a49c;
+  /* Syntax — high-contrast, readable */
+  --syn-key: #1a5fb4;
+  --syn-str: #267d3c;
+  --syn-num: #9a5d00;
+  --syn-bool: #7c3aed;
+  --syn-null: #c01c28;
+  --syn-punct: #93908a;
+  --syn-hover: rgba(29, 111, 165, 0.05);
 }
 
-/* --- Dark (default) --- */
+/* --- Dark (refined slate, clear hierarchy) --- */
 .dark {
-  --jf-bg: #0f172a;
-  --jf-surface-1: #1e293b;
-  --jf-surface-2: #1e293b;
-  --jf-surface-3: #334155;
-  --jf-panel: rgba(15, 23, 42, 0.85);
-  --jf-border: #1e293b;
-  --jf-border-strong: #334155;
-  --jf-text: #f1f5f9;
-  --jf-text-secondary: #94a3b8;
-  --jf-text-muted: #475569;
-  --jf-accent: #0ea5e9;
-  --jf-accent-hover: #38bdf8;
-  --jf-accent-bg: rgba(14, 165, 233, 0.12);
-  --jf-accent-border: rgba(14, 165, 233, 0.25);
-  --jf-thumb: #334155;
-  --jf-thumb-hover: #475569;
-  --syn-key: #38bdf8;
-  --syn-str: #34d399;
-  --syn-num: #fbbf24;
-  --syn-bool: #a78bfa;
+  --jf-bg: #111318;
+  --jf-surface-1: #191c24;
+  --jf-surface-2: #1d2029;
+  --jf-surface-3: #282c38;
+  --jf-panel: rgba(17, 19, 24, 0.92);
+  --jf-border: #262a34;
+  --jf-border-strong: #363c4a;
+  --jf-text: #e4e6eb;
+  --jf-text-secondary: #9ba1b0;
+  --jf-text-muted: #4e5567;
+  --jf-accent: #3da9f5;
+  --jf-accent-hover: #6ec3ff;
+  --jf-accent-bg: rgba(61, 169, 245, 0.1);
+  --jf-accent-border: rgba(61, 169, 245, 0.22);
+  --jf-thumb: #2a2f3c;
+  --jf-thumb-hover: #3a4154;
+  /* Syntax — vivid, readable on dark */
+  --syn-key: #5eb8f7;
+  --syn-str: #4ade80;
+  --syn-num: #f5b942;
+  --syn-bool: #b89cff;
   --syn-null: #f87171;
-  --syn-punct: #475569;
-  --syn-hover: rgba(14, 165, 233, 0.05);
+  --syn-punct: #3e4458;
+  --syn-hover: rgba(61, 169, 245, 0.06);
 }
 
-/* --- Bold Dark --- */
+/* --- Bold Dark (pure black, high contrast — KEEP) --- */
 .theme-bold {
   --jf-bg: #000000;
   --jf-surface-1: #0a0a0a;
@@ -257,85 +258,85 @@
   --syn-hover: rgba(255, 255, 255, 0.04);
 }
 
-/* --- Midnight --- */
+/* --- Midnight (rich indigo-violet, deep & warm) --- */
 .theme-midnight {
-  --jf-bg: #0c0e1a;
-  --jf-surface-1: #151829;
-  --jf-surface-2: #181c30;
-  --jf-surface-3: #252a45;
-  --jf-panel: rgba(12, 14, 26, 0.9);
-  --jf-border: #1c2038;
-  --jf-border-strong: #2a2f4a;
-  --jf-text: #e2e8f0;
-  --jf-text-secondary: #8b92b0;
-  --jf-text-muted: #4a5072;
-  --jf-accent: #818cf8;
-  --jf-accent-hover: #a5b4fc;
-  --jf-accent-bg: rgba(129, 140, 248, 0.1);
-  --jf-accent-border: rgba(129, 140, 248, 0.25);
-  --jf-thumb: #252a45;
-  --jf-thumb-hover: #3a3f5c;
-  --syn-key: #818cf8;
-  --syn-str: #34d399;
-  --syn-num: #fbbf24;
-  --syn-bool: #c084fc;
+  --jf-bg: #0e0d1a;
+  --jf-surface-1: #161428;
+  --jf-surface-2: #1b1832;
+  --jf-surface-3: #272348;
+  --jf-panel: rgba(14, 13, 26, 0.92);
+  --jf-border: #252140;
+  --jf-border-strong: #362f5e;
+  --jf-text: #e0dded;
+  --jf-text-secondary: #9d96bf;
+  --jf-text-muted: #4e4770;
+  --jf-accent: #9b8aff;
+  --jf-accent-hover: #b8a8ff;
+  --jf-accent-bg: rgba(155, 138, 255, 0.1);
+  --jf-accent-border: rgba(155, 138, 255, 0.22);
+  --jf-thumb: #272348;
+  --jf-thumb-hover: #3a3460;
+  --syn-key: #a89cff;
+  --syn-str: #6ee7a0;
+  --syn-num: #f5c542;
+  --syn-bool: #d4a0f5;
   --syn-null: #f87171;
-  --syn-punct: #3a3f5c;
-  --syn-hover: rgba(129, 140, 248, 0.05);
+  --syn-punct: #362f5e;
+  --syn-hover: rgba(155, 138, 255, 0.06);
 }
 
-/* --- Monochrome --- */
+/* --- Monochrome (warm charcoal, not cold) --- */
 .theme-mono {
-  --jf-bg: #0a0a0a;
-  --jf-surface-1: #141414;
-  --jf-surface-2: #161616;
-  --jf-surface-3: #262626;
-  --jf-panel: rgba(10, 10, 10, 0.92);
-  --jf-border: #1c1c1c;
-  --jf-border-strong: #333333;
-  --jf-text: #e5e5e5;
-  --jf-text-secondary: #a3a3a3;
-  --jf-text-muted: #525252;
-  --jf-accent: #d4d4d4;
+  --jf-bg: #111111;
+  --jf-surface-1: #1a1a1a;
+  --jf-surface-2: #1e1e1e;
+  --jf-surface-3: #2a2a2a;
+  --jf-panel: rgba(17, 17, 17, 0.94);
+  --jf-border: #262626;
+  --jf-border-strong: #3a3a3a;
+  --jf-text: #e8e8e8;
+  --jf-text-secondary: #a8a8a8;
+  --jf-text-muted: #585858;
+  --jf-accent: #d0d0d0;
   --jf-accent-hover: #ffffff;
-  --jf-accent-bg: rgba(212, 212, 212, 0.07);
-  --jf-accent-border: rgba(212, 212, 212, 0.15);
-  --jf-thumb: #262626;
-  --jf-thumb-hover: #404040;
-  --syn-key: #e5e5e5;
-  --syn-str: #a3a3a3;
-  --syn-num: #737373;
-  --syn-bool: #d4d4d4;
+  --jf-accent-bg: rgba(208, 208, 208, 0.08);
+  --jf-accent-border: rgba(208, 208, 208, 0.18);
+  --jf-thumb: #2a2a2a;
+  --jf-thumb-hover: #444444;
+  --syn-key: #f0f0f0;
+  --syn-str: #b8b8b8;
+  --syn-num: #888888;
+  --syn-bool: #d8d8d8;
   --syn-null: #ef4444;
-  --syn-punct: #404040;
-  --syn-hover: rgba(212, 212, 212, 0.04);
+  --syn-punct: #484848;
+  --syn-hover: rgba(208, 208, 208, 0.04);
 }
 
-/* --- Nord --- */
+/* --- Nord (authentic polar night + frost, rich & readable) --- */
 .theme-nord {
   --jf-bg: #2e3440;
-  --jf-surface-1: #3b4252;
-  --jf-surface-2: #3b4252;
-  --jf-surface-3: #434c5e;
-  --jf-panel: rgba(46, 52, 64, 0.9);
-  --jf-border: #434c5e;
-  --jf-border-strong: #4c566a;
+  --jf-surface-1: #353c4a;
+  --jf-surface-2: #3b4353;
+  --jf-surface-3: #465064;
+  --jf-panel: rgba(46, 52, 64, 0.92);
+  --jf-border: #3e4758;
+  --jf-border-strong: #546070;
   --jf-text: #eceff4;
   --jf-text-secondary: #d8dee9;
-  --jf-text-muted: #4c566a;
+  --jf-text-muted: #5c6680;
   --jf-accent: #88c0d0;
-  --jf-accent-hover: #8fbcbb;
+  --jf-accent-hover: #a3d4e0;
   --jf-accent-bg: rgba(136, 192, 208, 0.12);
-  --jf-accent-border: rgba(136, 192, 208, 0.25);
+  --jf-accent-border: rgba(136, 192, 208, 0.22);
   --jf-thumb: #434c5e;
-  --jf-thumb-hover: #4c566a;
-  --syn-key: #88c0d0;
+  --jf-thumb-hover: #546070;
+  --syn-key: #8fbcbb;
   --syn-str: #a3be8c;
   --syn-num: #d08770;
   --syn-bool: #b48ead;
   --syn-null: #bf616a;
   --syn-punct: #4c566a;
-  --syn-hover: rgba(136, 192, 208, 0.06);
+  --syn-hover: rgba(136, 192, 208, 0.07);
 }
 
 /* Ensure light theme has proper background for body */
