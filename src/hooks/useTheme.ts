@@ -1,30 +1,50 @@
 import { useState, useEffect, useCallback } from 'react';
+import { ThemeId, getTheme, themes } from '../lib/themes';
 
-type Theme = 'dark' | 'light';
+const STORAGE_KEY = 'jf-theme';
+
+function applyTheme(id: ThemeId) {
+  const root = document.documentElement;
+  const theme = getTheme(id);
+
+  themes.forEach((t) => {
+    t.cssClass.split(' ').filter(Boolean).forEach((cls) => root.classList.remove(cls));
+  });
+
+  if (theme.cssClass) {
+    theme.cssClass.split(' ').filter(Boolean).forEach((cls) => root.classList.add(cls));
+  }
+
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme.accent);
+}
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(() => {
+  const [themeId, setThemeId] = useState<ThemeId>(() => {
     if (typeof window !== 'undefined') {
-      return (localStorage.getItem('jf-theme') as Theme) || 'dark';
+      return (localStorage.getItem(STORAGE_KEY) as ThemeId) || 'dark';
     }
     return 'dark';
   });
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('light');
-    } else {
-      root.classList.remove('dark');
-      root.classList.add('light');
-    }
-    localStorage.setItem('jf-theme', theme);
-  }, [theme]);
+    applyTheme(themeId);
+    localStorage.setItem(STORAGE_KEY, themeId);
+  }, [themeId]);
 
-  const toggle = useCallback(() => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  useEffect(() => {
+    applyTheme(themeId);
   }, []);
 
-  return { theme, toggle, isDark: theme === 'dark' };
+  const setTheme = useCallback((id: ThemeId) => {
+    setThemeId(id);
+  }, []);
+
+  const theme = getTheme(themeId);
+
+  return {
+    themeId,
+    theme,
+    setTheme,
+    isDark: theme.isDark,
+  };
 }

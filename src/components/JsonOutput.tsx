@@ -25,26 +25,34 @@ function TreeNodeItem({ node, searchQuery }: { node: TreeNode; searchQuery?: str
   const matchesSearch = searchQuery && searchQuery.length > 0 && node.key.toLowerCase().includes(searchQuery.toLowerCase());
 
   const valColor: Record<string, string> = {
-    string: 'text-emerald-700 dark:text-emerald-400',
-    number: 'text-amber-600 dark:text-amber-400',
-    boolean: 'text-purple-600 dark:text-purple-400',
-    null: 'text-red-500 dark:text-red-400 italic',
-    object: 'text-blue-600 dark:text-brand-400',
-    array: 'text-blue-500 dark:text-brand-300',
+    string: 'var(--syn-str)',
+    number: 'var(--syn-num)',
+    boolean: 'var(--syn-bool)',
+    null: 'var(--syn-null)',
+    object: 'var(--syn-key)',
+    array: 'var(--syn-key)',
   };
 
   const bracket = node.type === 'array' ? ['[', ']'] : ['{', '}'];
 
   if (!isExpandable) {
     return (
-      <div className={`flex items-center gap-1 hover:bg-brand-500/5 dark:hover:bg-brand-500/5 rounded px-1 -mx-1 ${matchesSearch ? 'bg-brand-100 dark:bg-brand-500/10 ring-1 ring-brand-400/30' : ''}`}>
+      <div
+        className="flex items-center gap-1 rounded px-1 -mx-1 transition-colors"
+        style={matchesSearch
+          ? { background: 'var(--jf-accent-bg)', boxShadow: `inset 0 0 0 1px var(--jf-accent-border)` }
+          : {}
+        }
+        onMouseEnter={(e) => { if (!matchesSearch) e.currentTarget.style.background = 'var(--syn-hover)'; }}
+        onMouseLeave={(e) => { if (!matchesSearch) e.currentTarget.style.background = 'transparent'; }}
+      >
         {node.key !== 'root' && (
           <>
-            <span className="text-slate-600 dark:text-slate-400">{node.key}</span>
-            <span className="text-slate-300 dark:text-slate-600">:</span>
+            <span style={{ color: 'var(--jf-text-secondary)' }}>{node.key}</span>
+            <span style={{ color: 'var(--jf-text-muted)' }}>:</span>
           </>
         )}
-        <span className={valColor[node.type] || 'text-slate-700 dark:text-slate-300'}>
+        <span style={{ color: valColor[node.type] || 'var(--jf-text)' }}>
           {node.type === 'string' ? `"${String(node.value)}"` : String(node.value)}
         </span>
       </div>
@@ -55,43 +63,50 @@ function TreeNodeItem({ node, searchQuery }: { node: TreeNode; searchQuery?: str
     <div>
       <button
         onClick={toggle}
-        className={`flex items-center gap-1 hover:bg-brand-500/5 dark:hover:bg-brand-500/5 rounded px-1 -mx-1 w-full text-left ${matchesSearch ? 'bg-brand-100 dark:bg-brand-500/10 ring-1 ring-brand-400/30' : ''}`}
+        className="flex items-center gap-1 rounded px-1 -mx-1 w-full text-left transition-colors"
+        style={matchesSearch
+          ? { background: 'var(--jf-accent-bg)', boxShadow: `inset 0 0 0 1px var(--jf-accent-border)` }
+          : {}
+        }
+        onMouseEnter={(e) => { if (!matchesSearch) e.currentTarget.style.background = 'var(--syn-hover)'; }}
+        onMouseLeave={(e) => { if (!matchesSearch) e.currentTarget.style.background = 'transparent'; }}
       >
         <svg
-          className={`w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0 transition-transform duration-150 ${expanded ? 'rotate-90' : ''}`}
+          className={`w-3 h-3 shrink-0 transition-transform duration-150 ${expanded ? 'rotate-90' : ''}`}
+          style={{ color: 'var(--jf-text-muted)' }}
           fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
         {node.key !== 'root' && (
           <>
-            <span className="text-slate-600 dark:text-slate-400">{node.key}</span>
-            <span className="text-slate-300 dark:text-slate-600">:</span>
+            <span style={{ color: 'var(--jf-text-secondary)' }}>{node.key}</span>
+            <span style={{ color: 'var(--jf-text-muted)' }}>:</span>
           </>
         )}
-        <span className="text-slate-400 dark:text-slate-500">{bracket[0]}</span>
+        <span style={{ color: 'var(--jf-text-muted)' }}>{bracket[0]}</span>
         {!expanded && (
           <>
-            <span className="text-slate-400 dark:text-slate-600 text-xs">
+            <span className="text-xs" style={{ color: 'var(--jf-text-muted)' }}>
               {node.childCount} {node.type === 'array' ? 'items' : 'keys'}
             </span>
-            <span className="text-slate-400 dark:text-slate-500">{bracket[1]}</span>
+            <span style={{ color: 'var(--jf-text-muted)' }}>{bracket[1]}</span>
           </>
         )}
       </button>
       {expanded && !isEmpty && (
-        <div className="pl-4 border-l border-slate-200 dark:border-slate-700/40 ml-1.5">
+        <div className="pl-4 ml-1.5" style={{ borderLeft: '1px solid var(--jf-border)' }}>
           {node.children?.map((child) => (
             <TreeNodeItem key={child.key} node={child} searchQuery={searchQuery} />
           ))}
         </div>
       )}
       {expanded && isEmpty && (
-        <div className="pl-4 text-slate-400 dark:text-slate-600 text-xs italic">
+        <div className="pl-4 text-xs italic" style={{ color: 'var(--jf-text-muted)' }}>
           {node.type === 'array' ? 'empty array' : 'empty object'}
         </div>
       )}
-      {expanded && <div className="text-slate-400 dark:text-slate-500 ml-4">{bracket[1]}</div>}
+      {expanded && <div className="ml-4" style={{ color: 'var(--jf-text-muted)' }}>{bracket[1]}</div>}
     </div>
   );
 }

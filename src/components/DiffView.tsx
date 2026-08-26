@@ -13,15 +13,16 @@ export default function DiffView({ left, right }: Props) {
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      <div className="flex items-center gap-3 px-4 py-2 text-[11px] border-b border-slate-200 dark:border-slate-700/30 shrink-0 bg-white dark:bg-transparent">
-        <span className="text-emerald-600 dark:text-emerald-400">+{counts.added} added</span>
-        <span className="text-red-600 dark:text-red-400">-{counts.removed} removed</span>
-        <span className="text-amber-600 dark:text-amber-400">~{counts.modified} modified</span>
-        <span className="text-slate-400 dark:text-slate-600 ml-auto">{entries.length} total paths</span>
+      <div className="flex items-center gap-3 px-4 py-2 text-[11px] shrink-0"
+        style={{ borderBottom: '1px solid var(--jf-border)' }}>
+        <span className="text-emerald-500 font-medium">+{counts.added} added</span>
+        <span className="text-red-500 font-medium">-{counts.removed} removed</span>
+        <span className="text-amber-500 font-medium">~{counts.modified} modified</span>
+        <span className="ml-auto" style={{ color: 'var(--jf-text-muted)' }}>{entries.length} total paths</span>
       </div>
       <div className="flex-1 overflow-auto p-4 font-mono text-[12px] leading-5">
         {visible.length === 0 ? (
-          <div className="text-slate-400 dark:text-slate-500 italic text-center py-12">
+          <div className="italic text-center py-12" style={{ color: 'var(--jf-text-muted)' }}>
             {entries.length === 0
               ? 'Paste JSON in both panels to compare.'
               : 'No differences — both inputs are identical.'
@@ -41,27 +42,28 @@ function DiffRow({ entry }: { entry: DiffEntry }) {
     return typeof v === 'object' ? JSON.stringify(v, null, 2) : String(v);
   };
 
-  const styles: Record<string, { bg: string; border: string; icon: string; iconColor: string }> = {
-    added: { bg: 'bg-emerald-50 dark:bg-emerald-500/5', border: 'border-emerald-300 dark:border-emerald-500/30', icon: '+', iconColor: 'text-emerald-500 dark:text-emerald-400' },
-    removed: { bg: 'bg-red-50 dark:bg-red-500/5', border: 'border-red-300 dark:border-red-500/30', icon: '−', iconColor: 'text-red-500 dark:text-red-400' },
-    modified: { bg: 'bg-amber-50 dark:bg-amber-500/5', border: 'border-amber-300 dark:border-amber-500/30', icon: '~', iconColor: 'text-amber-500 dark:text-amber-400' },
-    unchanged: { bg: '', border: '', icon: '', iconColor: '' },
+  const colors: Record<string, { bg: string; border: string; text: string; icon: string }> = {
+    added:    { bg: 'rgba(34, 197, 94, 0.06)', border: '#22c55e', text: '#22c55e', icon: '+' },
+    removed:  { bg: 'rgba(239, 68, 68, 0.06)', border: '#ef4444', text: '#ef4444', icon: '−' },
+    modified: { bg: 'rgba(234, 179, 8, 0.06)', border: '#eab308', text: '#eab308', icon: '~' },
+    unchanged: { bg: '', border: '', text: '', icon: '' },
   };
 
-  const s = styles[entry.kind];
+  const c = colors[entry.kind];
 
   return (
-    <div className={`flex gap-2 py-1 px-2 rounded border-l-2 ${s.bg} ${s.border} mb-1`}>
-      <span className={`w-4 text-center shrink-0 font-bold ${s.iconColor}`}>{s.icon}</span>
-      <span className="text-slate-500 dark:text-slate-400 shrink-0 min-w-[100px] truncate text-[11px]">{entry.path}</span>
-      <span className="text-slate-300 dark:text-slate-600 mx-0.5">→</span>
+    <div className="flex gap-2 py-1 px-2 rounded mb-1"
+      style={{ background: c.bg, borderLeft: `2px solid ${c.border}` }}>
+      <span className="w-4 text-center shrink-0 font-bold" style={{ color: c.text }}>{c.icon}</span>
+      <span className="shrink-0 min-w-[100px] truncate text-[11px]" style={{ color: 'var(--jf-text-muted)' }}>{entry.path}</span>
+      <span style={{ color: 'var(--jf-text-muted)' }}>→</span>
       <span className="truncate text-[12px]">
-        {entry.kind === 'added' && <span className="text-emerald-700 dark:text-emerald-400">{valStr(entry.right)}</span>}
-        {entry.kind === 'removed' && <span className="text-red-700 dark:text-red-400 line-through opacity-70">{valStr(entry.left)}</span>}
+        {entry.kind === 'added' && <span style={{ color: '#22c55e' }}>{valStr(entry.right)}</span>}
+        {entry.kind === 'removed' && <span style={{ color: '#ef4444' }} className="line-through opacity-70">{valStr(entry.left)}</span>}
         {entry.kind === 'modified' && (
           <span>
-            <span className="text-red-600 dark:text-red-400 line-through opacity-60 mr-2">{valStr(entry.left)}</span>
-            <span className="text-emerald-700 dark:text-emerald-400">{valStr(entry.right)}</span>
+            <span style={{ color: '#ef4444' }} className="line-through opacity-60 mr-2">{valStr(entry.left)}</span>
+            <span style={{ color: '#22c55e' }}>{valStr(entry.right)}</span>
           </span>
         )}
       </span>

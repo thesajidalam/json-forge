@@ -24,7 +24,7 @@ const JsonInput = forwardRef<HTMLTextAreaElement, Props>(({ value, onChange, err
 
   useEffect(() => {
     if (errorLine && textareaRef.current && lineNumbersRef.current) {
-      const lineH = 20;
+      const lineH = 22;
       lineNumbersRef.current.scrollTop = Math.max(0, (errorLine - 3) * lineH);
       textareaRef.current.scrollTop = Math.max(0, (errorLine - 3) * lineH);
     }
@@ -57,7 +57,7 @@ const JsonInput = forwardRef<HTMLTextAreaElement, Props>(({ value, onChange, err
         autoComplete="off"
         autoCorrect="off"
         autoCapitalize="off"
-        className="input-area !pl-3 font-mono text-[13px] leading-5"
+        className="input-area !pl-3 font-mono text-[13px] leading-[22px]"
         style={{ tabSize: 2 }}
       />
     </div>

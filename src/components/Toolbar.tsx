@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 export type ViewMode = 'formatted' | 'tree' | 'diff';
 export type OutputTab = 'output' | 'csv' | 'yaml' | 'typescript';
 
@@ -25,17 +23,17 @@ interface Props {
 }
 
 export default function Toolbar({
-  onFormat, onMinify, onCopy, onDownload, onUpload, onFileUpload,
+  onFormat, onMinify, onCopy, onDownload, onFileUpload,
   viewMode, onViewModeChange,
   outputTab, onOutputTabChange,
-  copied, isValid, hasContent, stats,
+  copied, isValid, hasContent,
   indent, onIndentChange, wordWrap, onWordWrapToggle,
 }: Props) {
   return (
-    <div className="flex flex-col gap-2 px-3 py-2 border-b border-slate-200 dark:border-slate-700/50 toolbar-bg shrink-0">
+    <div className="flex flex-col gap-2 px-3 py-2 toolbar-bg shrink-0">
       {/* Row 1: Actions + View toggles */}
       <div className="flex items-center justify-between gap-2 flex-wrap">
-        <div className="flex items-center gap-1 flex-wrap">
+        <div className="flex items-center gap-0.5 flex-wrap">
           <ActionBtn onClick={onFormat} disabled={!hasContent || !isValid} title="Format (Ctrl+Enter)">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h10M4 18h14" />
@@ -49,7 +47,7 @@ export default function Toolbar({
             <span className="hidden sm:inline">Minify</span>
           </ActionBtn>
 
-          <div className="w-px h-5 bg-slate-200 dark:bg-slate-700/50 mx-0.5" />
+          <div className="w-px h-4 mx-0.5" style={{ background: 'var(--jf-border)' }} />
 
           <ActionBtn onClick={onCopy} disabled={!hasContent || !isValid} accent={copied} title="Copy (Ctrl+Shift+C)">
             {copied ? (
@@ -97,19 +95,21 @@ export default function Toolbar({
         ) : <div />}
 
         <div className="flex items-center gap-2">
-          {/* Indent control */}
-          <div className="flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-500">
-            <span className="hidden md:inline">Indent:</span>
-            <div className="flex items-center bg-slate-100 dark:bg-slate-800 rounded-md border border-slate-200 dark:border-slate-700/50 overflow-hidden">
+          <div className="flex items-center gap-1 text-[11px]" style={{ color: 'var(--jf-text-muted)' }}>
+            <span className="hidden md:inline">Indent</span>
+            <div className="flex items-center rounded-md overflow-hidden"
+              style={{ background: 'var(--jf-surface-2)', border: '1px solid var(--jf-border)' }}>
               {[2, 4, 8].map((n) => (
                 <button
                   key={n}
                   onClick={() => onIndentChange(n)}
-                  className={`px-1.5 py-0.5 text-[10px] font-mono font-medium transition-colors ${
-                    indent === n
-                      ? 'bg-brand-500 text-white'
-                      : 'text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
-                  }`}
+                  className="px-1.5 py-0.5 text-[10px] font-mono font-medium transition-colors"
+                  style={indent === n ? {
+                    background: 'var(--jf-accent)',
+                    color: '#ffffff',
+                  } : {
+                    color: 'var(--jf-text-muted)',
+                  }}
                 >
                   {n}
                 </button>
@@ -117,14 +117,18 @@ export default function Toolbar({
             </div>
           </div>
 
-          {/* Word wrap */}
           <button
             onClick={onWordWrapToggle}
-            className={`px-1.5 py-0.5 rounded text-[10px] font-medium transition-colors border ${
-              wordWrap
-                ? 'bg-brand-50 dark:bg-brand-500/10 border-brand-200 dark:border-brand-500/25 text-brand-600 dark:text-brand-400'
-                : 'bg-transparent border-slate-200 dark:border-slate-700/50 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-400'
-            }`}
+            className="px-1.5 py-0.5 rounded text-[10px] font-medium transition-colors"
+            style={wordWrap ? {
+              background: 'var(--jf-accent-bg)',
+              color: 'var(--jf-accent)',
+              border: `1px solid var(--jf-accent-border)`,
+            } : {
+              background: 'transparent',
+              color: 'var(--jf-text-muted)',
+              border: `1px solid var(--jf-border)`,
+            }}
             title="Toggle word wrap"
           >
             Wrap
@@ -143,11 +147,21 @@ function ActionBtn({ onClick, disabled, children, accent, title }: {
       onClick={onClick}
       disabled={disabled}
       title={title}
-      className={`btn !text-xs !px-2 !py-1 transition-all ${
-        accent
-          ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/25'
-          : 'bg-transparent hover:bg-slate-100 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
-      }`}
+      className="btn !text-xs !px-2 !py-1 transition-all"
+      style={accent ? {
+        background: 'rgba(34, 197, 94, 0.1)',
+        color: '#22c55e',
+        border: '1px solid rgba(34, 197, 94, 0.25)',
+      } : {
+        background: 'transparent',
+        color: 'var(--jf-text-secondary)',
+      }}
+      onMouseEnter={(e) => {
+        if (!disabled && !accent) e.currentTarget.style.background = 'var(--jf-accent-bg)';
+      }}
+      onMouseLeave={(e) => {
+        if (!accent) e.currentTarget.style.background = 'transparent';
+      }}
     >
       {children}
     </button>
@@ -158,11 +172,21 @@ function ViewBtn({ active, onClick, children }: { active: boolean; onClick: () =
   return (
     <button
       onClick={onClick}
-      className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
-        active
-          ? 'bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-500/25'
-          : 'text-slate-500 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5'
-      }`}
+      className="px-2.5 py-1 rounded-lg text-xs font-medium transition-all"
+      style={active ? {
+        background: 'var(--jf-accent-bg)',
+        color: 'var(--jf-accent)',
+        border: `1px solid var(--jf-accent-border)`,
+      } : {
+        color: 'var(--jf-text-muted)',
+        border: '1px solid transparent',
+      }}
+      onMouseEnter={(e) => {
+        if (!active) { e.currentTarget.style.color = 'var(--jf-text)'; e.currentTarget.style.background = 'var(--jf-accent-bg)'; }
+      }}
+      onMouseLeave={(e) => {
+        if (!active) { e.currentTarget.style.color = 'var(--jf-text-muted)'; e.currentTarget.style.background = 'transparent'; }
+      }}
     >
       {children}
     </button>
@@ -173,11 +197,19 @@ function TabBtn({ active, onClick, children }: { active: boolean; onClick: () =>
   return (
     <button
       onClick={onClick}
-      className={`px-2 py-0.5 rounded text-[11px] font-medium transition-all ${
-        active
-          ? 'bg-slate-200 dark:bg-slate-700/60 text-slate-800 dark:text-slate-200'
-          : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-400'
-      }`}
+      className="px-2 py-0.5 rounded text-[11px] font-medium transition-all"
+      style={active ? {
+        background: 'var(--jf-surface-3)',
+        color: 'var(--jf-text)',
+      } : {
+        color: 'var(--jf-text-muted)',
+      }}
+      onMouseEnter={(e) => {
+        if (!active) e.currentTarget.style.color = 'var(--jf-text-secondary)';
+      }}
+      onMouseLeave={(e) => {
+        if (!active) e.currentTarget.style.color = 'var(--jf-text-muted)';
+      }}
     >
       {children}
     </button>
