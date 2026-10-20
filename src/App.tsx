@@ -28,7 +28,8 @@ const SAMPLE = `{
     "convert": ["CSV", "YAML", "TypeScript"]
   },
   "users": [
-    { "name": "Developer", "rating": 5 },
+    { "name": "Sajid Alam", "rating": 5 },
+    { "name": "Developer", "rating": 3 },
     { "name": "Designer", "rating": 4 }
   ]
 }`;
